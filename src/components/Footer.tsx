@@ -132,15 +132,15 @@ export default function Footer({ onSectionChange }: FooterProps) {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary-foreground/60" />
-                <span className="text-sm text-primary-foreground/80">hello@appscendlabs.com</span>
+                <span className="text-sm text-primary-foreground/80">tmenzie@appscendlabs.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary-foreground/60" />
-                <span className="text-sm text-primary-foreground/80">+1 (555) 123-4567</span>
+                <span className="text-sm text-primary-foreground/80">+1 (501) 288-3309</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-primary-foreground/60" />
-                <span className="text-sm text-primary-foreground/80">123 Innovation Drive, Tech City</span>
+                <span className="text-sm text-primary-foreground/80">680 S Calhoun Pl, Star Idaho</span>
               </div>
             </div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
