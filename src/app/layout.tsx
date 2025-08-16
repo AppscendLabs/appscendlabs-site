@@ -1,6 +1,13 @@
 // app/layout.tsx
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
+
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover', // iOS safe areas
+}
 
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Appscend Labs'
 const siteUrl =

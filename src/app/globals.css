@@ -104,10 +104,17 @@
 @layer base {
   /* Hide viewport scrollbars but keep scrolling */
   html, body {
-    -ms-overflow-style: none;      
-    scrollbar-width: none;         
-    overflow-y: auto;              
     height: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    /* stop sideways wiggle */
+    max-width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+
+    /* keep layout stable when vertical scrollbar appears/disappears */
+    scrollbar-gutter: stable both-edges;
   }
   html::-webkit-scrollbar,
   body::-webkit-scrollbar {
@@ -115,10 +122,15 @@
     height: 0 !important;
   }
 
-  /* Prevent layout shift if any library tries to add body padding when locking scroll */
-  html[data-scroll-locked] body {
-    padding-right: 0 !important;
-  }
+  /* Radix (react-remove-scroll) adds this class when Select/Sheet/Dialog opens.
+     Prevents header from “jumping” by removing body padding-right. */
+  body.react-remove-scroll-body { padding-right: 0 !important; }
+  :root { --removed-body-scroll-bar-size: 0 !important; }
 
-  html { scrollbar-gutter: stable both-edges; }
+  /* Defensive: media never overflow the viewport width */
+  img, video, canvas, svg { max-width: 100%; height: auto; }
+
+  /* Ensure sizing never accidentally exceeds container widths */
+  *, *::before, *::after { box-sizing: border-box; }
 }
+

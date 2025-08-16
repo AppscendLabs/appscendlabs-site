@@ -88,7 +88,7 @@ export default function AboutSection() {
             <div className="relative overflow-hidden rounded-2xl shadow-lg">
               {/* plain <img> to avoid next/image remote config for now */}
               <img
-                src="https://images.unsplash.com/photo-1739287088635-444554e7ac0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                src="/images/office-job.jpg"
                 alt="Team workspace"
                 className="h-80 w-full object-cover"
               />
