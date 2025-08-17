@@ -254,11 +254,11 @@ export default function ContactSection() {
                           sideOffset={8}
                           className="z-[60] bg-white dark:bg-slate-900"
                         >
-                          <SelectItem value="5k-10k">$5,000 – $10,000</SelectItem>
-                          <SelectItem value="10k-25k">$10,000 – $25,000</SelectItem>
-                          <SelectItem value="25k-50k">$25,000 – $50,000</SelectItem>
-                          <SelectItem value="50k+">$50,000+</SelectItem>
                           <SelectItem value="discuss">Let&apos;s Discuss</SelectItem>
+                          <SelectItem value="100-1k">$100 – $1000</SelectItem>
+                          <SelectItem value="1k-2k">$1,000 – $2,000</SelectItem>
+                          <SelectItem value="2k-5k">$2,000 – $5,000</SelectItem>
+                          <SelectItem value="5kplus">$5,000 + </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
