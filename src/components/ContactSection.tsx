@@ -258,7 +258,7 @@ export default function ContactSection() {
                           <SelectItem value="100-1k">$100 – $1000</SelectItem>
                           <SelectItem value="1k-2k">$1,000 – $2,000</SelectItem>
                           <SelectItem value="2k-5k">$2,000 – $5,000</SelectItem>
-                          <SelectItem value="5kplus">$5,000 + </SelectItem>
+                          <SelectItem value="5kplus">$5,000+ </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

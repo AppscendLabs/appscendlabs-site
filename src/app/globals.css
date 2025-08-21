@@ -14,7 +14,6 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  /* brand */
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
 
@@ -33,7 +32,7 @@
   --radius: 0.5rem;
 }
 
-/* Keep your :root and .dark blocks — but update primary to your brand */
+/* Tokens */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -48,7 +47,7 @@
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
 
-    /* Sky-ish brand (#0ea5e9 ≈ hsl(199 89% 48%)) */
+    /* brand: sky-like */
     --primary: 199 89% 48%;
     --primary-foreground: 210 40% 98%;
 
@@ -95,42 +94,68 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
-
-  /* Apply background/text and ensure borders pick up the token */
-  * { border-color: hsl(var(--border)); }
-  body { background: hsl(var(--background)); color: hsl(var(--foreground)); }
 }
 
+/* Base resets + scrolling behavior */
 @layer base {
-  /* Hide viewport scrollbars but keep scrolling */
-  html, body {
-    height: 100%;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-
-    /* stop sideways wiggle */
-    max-width: 100%;
-    overflow-x: hidden;
-    overscroll-behavior-x: none;
-
-    /* keep layout stable when vertical scrollbar appears/disappears */
-    scrollbar-gutter: stable both-edges;
-  }
-  html::-webkit-scrollbar,
-  body::-webkit-scrollbar {
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  /* Radix (react-remove-scroll) adds this class when Select/Sheet/Dialog opens.
-     Prevents header from “jumping” by removing body padding-right. */
-  body.react-remove-scroll-body { padding-right: 0 !important; }
-  :root { --removed-body-scroll-bar-size: 0 !important; }
-
-  /* Defensive: media never overflow the viewport width */
-  img, video, canvas, svg { max-width: 100%; height: auto; }
-
-  /* Ensure sizing never accidentally exceeds container widths */
   *, *::before, *::after { box-sizing: border-box; }
-}
+  * { border-color: hsl(var(--border)); }
 
+  html {
+    /* Smooth by default; your JS still drives section scroll */
+    scroll-behavior: smooth;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+
+    /* Let the doc size naturally; avoid iOS bottom whitespace */
+    height: auto;
+    min-height: 100%;
+
+    /* Prevent sideways jiggle */
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    /* Mobile rendering niceties */
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Reduce rubber-band where supported (iOS ignores) */
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: none;
+  }
+
+  /* Don’t allow scroll-lock libs to add padding-right (layout shift) */
+  html[data-scroll-locked] body { padding-right: 0 !important; }
+
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  /* Hide scrollbars on desktop only (keeps mobile sane) */
+  @supports selector(::-webkit-scrollbar) {
+    @media (pointer: fine) {
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar { width: 0; height: 0; }
+    }
+  }
+
+  /* Media defaults */
+  img, video { max-width: 100%; height: auto; }
+  picture { display: contents; }
+
+  /* Accessible focus ring (tailwind's ring utilities still work) */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  /* Selection color */
+  ::selection {
+    background: hsl(var(--primary) / 0.18);
+  }
+}
