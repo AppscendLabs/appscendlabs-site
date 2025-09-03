@@ -80,7 +80,7 @@ export default function PrivacyContent() {
       </Section>
 
       <Section title="9. Contact">
-        <p>Appscend Labs, LLC — privacy@appscendlabs.com</p>
+        <p>Appscend Labs, LLC — appscendlabs@gmail.com</p>
       </Section>
     </article>
   )

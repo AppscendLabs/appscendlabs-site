@@ -68,7 +68,7 @@ export default function TermsContent() {
       </Section>
 
       <Section title="9. Contact">
-        <p>Appscend Labs, LLC — support@appscendlabs.com</p>
+        <p>Appscend Labs, LLC — appscendlabs@gmail.com</p>
       </Section>
     </article>
   )
