@@ -20,6 +20,16 @@ export const metadata: Metadata = {
 }
 
 export default function LoopFitPage() {
+  // Provide your real App Store URL in .env as NEXT_PUBLIC_LOOPFIT_APPSTORE_URL
+  const APP_STORE_URL = process.env.NEXT_PUBLIC_LOOPFIT_APPSTORE_URL || ''
+  const hasStoreLink = !!APP_STORE_URL
+
+  // Use a simple third-party QR endpoint so you don’t need a dependency or local image.
+  // (This is an <img>, not next/image, so no next.config.js changes needed.)
+  const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(
+    APP_STORE_URL || 'https://example.com'
+  )}`
+
   return (
     <div className="min-h-screen bg-white text-slate-900">
       {/* Same header look/feel as homepage */}
@@ -29,38 +39,75 @@ export default function LoopFitPage() {
         {/* Hero */}
         <section className="bg-slate-50 py-16">
           <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+            {/* Left: copy + CTAs */}
             <div>
               <h1 className="text-3xl text-primary md:text-5xl">LoopFit</h1>
               <p className="mt-4 text-lg text-muted-foreground">
                 Habit loops, friendly challenges, and Apple Health integration to keep you consistent.
               </p>
 
-              {/* Primary CTA */}
-              
-              {/* <div className="mt-8 flex flex-wrap gap-3">
+              {/* Download CTA */}
+              <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
-                  href="#"
-                  className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
+                  href={hasStoreLink ? APP_STORE_URL : '#'}
+                  target={hasStoreLink ? '_blank' : undefined}
+                  rel={hasStoreLink ? 'noopener noreferrer' : undefined}
+                  aria-disabled={!hasStoreLink}
+                  className={`inline-flex items-center rounded-md px-4 py-2 text-sm font-medium
+                    ${hasStoreLink
+                      ? 'bg-primary text-primary-foreground hover:opacity-90'
+                      : 'cursor-not-allowed bg-slate-200 text-slate-500'}`}
                 >
-                  Download the App
+                  Download on the App&nbsp;Store
                 </Link>
-              </div> */}
 
-              {/* Modal triggers for Privacy & Terms (also include full-page fallbacks inside the modals) */}
-              <LoopFitLegalModals />
+                {/* Privacy / Terms modals + buttons */}
+                <LoopFitLegalModals/>
+              </div>
 
-              <p className="mt-4 text-sm text-slate-500">QR code download and App Store links coming soon.</p>
+              {!hasStoreLink && (
+                <p className="mt-3 text-sm text-slate-500">
+                  App Store link coming soon.
+                </p>
+              )}
             </div>
 
-            {/* App preview / placeholder image */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border bg-white shadow">
-              <Image
-                src="/images/loopfit-cover.jpg"
-                alt="LoopFit preview"
-                fill
-                className="object-cover"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-              />
+            {/* Right: preview + QR */}
+            <div className="space-y-6">
+              {/* App preview / placeholder image */}
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border bg-white shadow">
+                <Image
+                  src="/images/loopfit-cover.png"
+                  alt="LoopFit preview"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                />
+              </div>
+
+              {/* QR card */}
+              <div className="flex items-center gap-4 rounded-xl border bg-white p-4 shadow-sm md:gap-6 md:p-6">
+                <div className="shrink-0 overflow-hidden rounded-lg border">
+                  <img
+                    src={qrSrc}
+                    alt="QR code to download LoopFit"
+                    width={160}
+                    height={160}
+                    className="block h-40 w-40"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-primary">Scan to Download</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Open your camera and scan the code to go directly to the App Store.
+                  </p>
+                  {hasStoreLink && (
+                    <p className="mt-2 text-xs text-slate-500 break-all">
+                      {APP_STORE_URL}
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </section>

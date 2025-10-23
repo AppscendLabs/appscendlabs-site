@@ -12,7 +12,7 @@ export default function WorksSection() {
       title: 'LoopFit',
       description:
         'Habit loops, friendly challenges, and Apple Health integration to keep you consistent.',
-      image: '/images/loopfit-cover.jpg', // optional local image
+      image: '/images/loopfit-cover.png', // optional local image
       technologies: ['React Native', 'Expo', 'Apple Health'],
       category: 'Mobile App',
       href: '/works/loopfit',
