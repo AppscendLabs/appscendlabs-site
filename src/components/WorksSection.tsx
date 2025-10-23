@@ -12,21 +12,21 @@ export default function WorksSection() {
       title: 'LoopFit',
       description:
         'Habit loops, friendly challenges, and Apple Health integration to keep you consistent.',
-      image: '/images/loopfit-cover.png', // optional local image
+      image: '/images/loopfit-cover.png',
       technologies: ['React Native', 'Expo', 'Apple Health'],
       category: 'Mobile App',
       href: '/works/loopfit',
     },
-    {
-      title: 'FinTech Dashboard',
-      description:
-        'A comprehensive financial analytics platform with real-time visualization and advanced reporting.',
-      image:
-        'https://images.unsplash.com/photo-1575388902449-6bca946ad549?auto=format&fit=crop&w=1600&q=80',
-      technologies: ['React', 'TypeScript', 'Chart.js', 'Node.js'],
-      category: 'Web Application',
-      href: '#',
-    },
+    // {
+    //   title: 'FinTech Dashboard',
+    //   description:
+    //     'A comprehensive financial analytics platform with real-time visualization and advanced reporting.',
+    //   image:
+    //     'https://images.unsplash.com/photo-1575388902449-6bca946ad549?auto=format&fit=crop&w=1600&q=80',
+    //   technologies: ['React', 'TypeScript', 'Chart.js', 'Node.js'],
+    //   category: 'Web Application',
+    //   href: '#',
+    // },
   ] as const
 
   const container = {
@@ -110,7 +110,9 @@ export default function WorksSection() {
                 </Card>
 
                 {/* Full-card link overlay */}
-                {project.href && project.href !== '#' && (
+                {project.href
+                //  && project.href !== '#' 
+                  && (
                   <Link
                     href={project.href}
                     className="absolute inset-0"
