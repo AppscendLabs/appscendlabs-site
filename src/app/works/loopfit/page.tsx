@@ -46,27 +46,30 @@ export default function LoopFitPage() {
                 Habit loops, friendly challenges, and Apple Health integration to keep you consistent.
               </p>
 
-              {/* Download CTA */}
-              <div className="mt-8 flex flex-wrap items-center gap-3">
+              {/* Download CTA + legal buttons (stacked, centered) */}
+              <div className="mt-8 flex flex-col items-center gap-4">
+                {/* Top row: download button centered */}
                 <Link
                   href={hasStoreLink ? APP_STORE_URL : '#'}
                   target={hasStoreLink ? '_blank' : undefined}
                   rel={hasStoreLink ? 'noopener noreferrer' : undefined}
                   aria-disabled={!hasStoreLink}
-                  className={`inline-flex items-center rounded-md px-4 py-2 text-sm font-medium
+                  className={`inline-flex items-center rounded-md px-5 py-3 text-sm font-medium
                     ${hasStoreLink
                       ? 'bg-primary text-primary-foreground hover:opacity-90'
                       : 'cursor-not-allowed bg-slate-200 text-slate-500'}`}
                 >
                   Download on the App&nbsp;Store
                 </Link>
-
-                {/* Privacy / Terms modals + buttons */}
-                <LoopFitLegalModals/>
+                  
+                {/* Second row: Privacy/Terms centered */}
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <LoopFitLegalModals />
+                </div>
               </div>
-
+                  
               {!hasStoreLink && (
-                <p className="mt-3 text-sm text-slate-500">
+                <p className="mt-3 text-center text-sm text-slate-500">
                   App Store link coming soon.
                 </p>
               )}

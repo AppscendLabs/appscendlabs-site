@@ -69,7 +69,7 @@ export default function WorksSection() {
               {/* Make the whole card clickable */}
               <div className="relative group">
                 <Card className="h-full overflow-hidden border-0 shadow-lg transition-shadow duration-300 hover:shadow-xl">
-                  <div className="relative h-56 w-full">
+                  <div className="relative aspect-[16/9] w-full">
                     {/* Image */}
                     <Image
                       src={project.image}
