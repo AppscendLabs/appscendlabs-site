@@ -25,7 +25,7 @@
     },
 
     // ✅ Silence the TS7 baseUrl deprecation warning for now
-    "ignoreDeprecations": "6.0",
+    "ignoreDeprecations": "5.0",
 
     "plugins": [{ "name": "next" }]
   },
