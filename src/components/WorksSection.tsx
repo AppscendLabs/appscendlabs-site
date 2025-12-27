@@ -17,6 +17,15 @@ export default function WorksSection() {
       category: 'Mobile App',
       href: '/works/loopfit',
     },
+    {
+      title: 'CutPhase',
+      description:
+        'An all-in-one fitness toolkit designed to simplify nutrition, planning, and progress tracking.',
+      image: '/images/cutphase-cover.png',
+      technologies: ['React Native', 'Express', 'Nutrition Tracking'],
+      category: 'Mobile App',
+      href: '/works/cutphase',
+    },
     // {
     //   title: 'FinTech Dashboard',
     //   description:
