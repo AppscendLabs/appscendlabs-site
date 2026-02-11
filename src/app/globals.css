@@ -109,27 +109,30 @@
   html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
 
-    /* Let the doc size naturally; avoid iOS bottom whitespace */
-    height: auto;
-    min-height: 100%;
+    /* Hide scrollbar but keep scrolling */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     /* Prevent sideways jiggle */
+    max-width: 100%;
     overflow-x: hidden;
-    overflow-y: auto;
+    overscroll-behavior-x: none;
+
+    /* Keep layout stable when scrollbar appears/disappears */
+    scrollbar-gutter: stable both-edges;
 
     /* Mobile rendering niceties */
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    /* Reduce rubber-band where supported (iOS ignores) */
-    overscroll-behavior-x: none;
-    overscroll-behavior-y: none;
   }
 
-  /* Don’t allow scroll-lock libs to add padding-right (layout shift) */
+  /* Radix (react-remove-scroll) scroll-lock overrides */
   html[data-scroll-locked] body { padding-right: 0 !important; }
+  body.react-remove-scroll-body { padding-right: 0 !important; }
+  :root { --removed-body-scroll-bar-size: 0 !important; }
 
   body {
     background: hsl(var(--background));
