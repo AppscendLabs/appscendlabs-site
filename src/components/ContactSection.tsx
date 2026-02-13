@@ -227,7 +227,7 @@ export default function ContactSection() {
                       <SelectContent
                         position="popper"
                         sideOffset={8}
-                        className="z-[60] bg-white dark:bg-slate-900"
+                        className="z-[60] bg-white text-slate-900"
                       >
                         <SelectItem value="website">Website Development</SelectItem>
                         <SelectItem value="mobile">Mobile App Development</SelectItem>
@@ -252,7 +252,7 @@ export default function ContactSection() {
                         <SelectContent
                           position="popper"
                           sideOffset={8}
-                          className="z-[60] bg-white dark:bg-slate-900"
+                          className="z-[60] bg-white text-slate-900"
                         >
                           <SelectItem value="discuss">Let&apos;s Discuss</SelectItem>
                           <SelectItem value="100-1k">$100 – $1000</SelectItem>
@@ -275,7 +275,7 @@ export default function ContactSection() {
                         <SelectContent
                           position="popper"
                           sideOffset={8}
-                          className="z-[60] bg-white dark:bg-slate-900"
+                          className="z-[60] bg-white text-slate-900"
                         >
                           <SelectItem value="asap">ASAP</SelectItem>
                           <SelectItem value="1-3months">1–3 Months</SelectItem>
